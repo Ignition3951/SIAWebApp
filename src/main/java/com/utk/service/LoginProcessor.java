@@ -11,6 +11,12 @@ public class LoginProcessor {
 
 	private Logger logger = Logger.getLogger(LoginProcessor.class.getName());
 
+	private final LoggedUserManagementService loggedUserManagementService;
+
+	public LoginProcessor(LoggedUserManagementService loggedUserManagementService) {
+		this.loggedUserManagementService = loggedUserManagementService;
+	}
+
 	private String username;
 	private String password;
 
@@ -33,6 +39,7 @@ public class LoginProcessor {
 	public boolean login() {
 		logger.info("username " + this.getUsername() + " password " + this.getPassword());
 		if ("utkarsh".equals(this.username) && "password".equals(this.password)) {
+			loggedUserManagementService.setUsername(this.username);
 			return true;
 		} else {
 			return false;
