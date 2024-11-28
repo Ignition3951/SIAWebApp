@@ -2,6 +2,8 @@ package com.utk.controller;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,9 +13,10 @@ import com.utk.model.Country;
 public class CountryController {
 
 	@GetMapping("/france")
-	public Country getCountryFrance() {
+	public ResponseEntity<Country> getCountryFrance() {
 		Country country = Country.of("France", 27);
-		return country;
+		return ResponseEntity.status(HttpStatus.ACCEPTED).header("continent", "europe").header("capital", "Paris")
+				.header("favorite_food", "cheese and wine").body(country);
 
 	}
 
