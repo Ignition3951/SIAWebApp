@@ -5,8 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.utk.exception.NotEnoughMoneyException;
-import com.utk.model.ErrorDetails;
 import com.utk.model.PaymentDetails;
 import com.utk.service.PaymentService;
 
@@ -21,15 +19,8 @@ public class PaymentController {
 
 	@PostMapping("/payment")
 	public ResponseEntity<?> makePayment() {
-		try {
-			PaymentDetails paymentDetails = paymentService.processMoney();
-			return ResponseEntity.status(HttpStatus.ACCEPTED).body(paymentDetails);
-		} catch (NotEnoughMoneyException e) {
-			ErrorDetails errorDetails = new ErrorDetails();
-			errorDetails.setMessage("Not Enough money to pay the amount!!!!!!!!!!!!");
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-					.body(errorDetails);
-		}
+		PaymentDetails paymentDetails = paymentService.processMoney();
+		return ResponseEntity.status(HttpStatus.ACCEPTED).body(paymentDetails);
 
 	}
 }
