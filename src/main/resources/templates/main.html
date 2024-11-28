@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="UTF-8">
-<title>MAIN PAGE</title>
+    <meta charset="UTF-8">
+    <title>MAIN PAGE</title>
 </head>
+
 <body>
-<h1>Welcome <span th:text="${username}"></span>!</h1>
-<a href="/main?logout">Logout</a>
+    <h1>Welcome <span th:text="${username}"></span>!</h1>
+    <h2>YOUR LOGIN ATTEMPTS ARE : <span th:text="${loginCount}"></span></h2>
+    <a href="/main?logout">Logout</a>
 </body>
+
 </html>

@@ -10,14 +10,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.utk.service.LoggedUserManagementService;
+import com.utk.service.LoginCount;
 
 @Controller
 public class MainController {
 
 	private final LoggedUserManagementService managementService;
 
-	public MainController(LoggedUserManagementService managementService) {
+	private final LoginCount loginCount;
+
+	public MainController(LoggedUserManagementService managementService, LoginCount loginCount) {
 		this.managementService = managementService;
+		this.loginCount = loginCount;
 	}
 
 	@RequestMapping("/home")
@@ -44,6 +48,7 @@ public class MainController {
 		}
 		if (username.isPresent()) {
 			model.addAttribute("username", username.get());
+			model.addAttribute("loginCount", loginCount.getCount());
 			return "main.html";
 		}
 		return "redirect:/";
