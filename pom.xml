@@ -55,5 +55,6 @@
   <modules>
     <module>siaclient</module>
     <module>SiaRestClient</module>
+    <module>SiaWebClient</module>
   </modules>
 </project>
