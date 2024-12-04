@@ -49,7 +49,7 @@
     <artifactId>spring-boot-starter-jdbc</artifactId>
 </dependency>
 <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
-<dependency>
+<!--<dependency>
     <groupId>com.h2database</groupId>
     <artifactId>h2</artifactId>
     <scope>compile</scope>
@@ -58,7 +58,15 @@
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-devtools</artifactId>
     <optional>true</optional>
+</dependency>-->
+<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>8.0.28</version>
+    <scope>runtime</scope>
 </dependency>
+
 
   </dependencies>
   <build>
