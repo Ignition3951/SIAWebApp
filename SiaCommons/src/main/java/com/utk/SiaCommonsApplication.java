@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SiaWebAppApplication {
+public class SiaCommonsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SiaWebAppApplication.class, args);
+		SpringApplication.run(SiaCommonsApplication.class, args);
 	}
 
 }
