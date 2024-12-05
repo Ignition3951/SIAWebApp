@@ -28,6 +28,8 @@ public class TransferService {
 
 		accountRepository.updateAmount(senderId, newSenderAmount);
 		accountRepository.updateAmount(recieverId, newReceiverAmount);
+
+		// throw new RuntimeException("OOPS! Something bad happened!!!!!!!!!!!!!!");
 	}
 
 	public List<Account> getAllAccounts() {
