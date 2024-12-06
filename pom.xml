@@ -83,5 +83,6 @@
     <module>SiaRestClient</module>
     <module>SiaWebClient</module>
     <module>SiaCommons</module>
+    <module>SiaSpringDataJdbc</module>
   </modules>
 </project>
