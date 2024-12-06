@@ -25,7 +25,7 @@ public class AccountController {
 	}
 	
 	@GetMapping("/accounts")
-	public List<Account> getAccountByName(@RequestParam String name){
+	public List<Account> getAccountByName(@RequestParam(required = false) String name) {
 		Optional<String> paramName = Optional.ofNullable(name);
 		if(paramName.isPresent()) {
 			return accountService.findAccountByName(name);

@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.utk.exception.AccountNotFoundException;
 import com.utk.model.Account;
@@ -26,6 +27,7 @@ public class AccountService {
 		return accountRepository.getAllAccountDetails();
 	}
 
+	@Transactional
 	public void changeAmount(Long senderId, Long receiverId, BigDecimal amount) {
 		Account newSenderId = accountRepository.findById(senderId)
 				.orElseThrow(() -> new AccountNotFoundException());
