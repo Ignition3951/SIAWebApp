@@ -1,6 +1,10 @@
 package com.utk;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
 import java.math.BigDecimal;
@@ -12,6 +16,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import com.utk.exception.AccountNotFoundException;
 import com.utk.model.Account;
 import com.utk.repository.AccountRepository;
 import com.utk.service.AccountService;
@@ -56,5 +61,21 @@ public class TransferServiceWithAnnotationUnitTests {
 
 
 
+	}
+
+	@Test
+	public void moneyTransferDestinationAccountNotFoundException() {
+		Account sender = new Account();
+		sender.setId(1);
+		sender.setAmount(new BigDecimal(500));
+		
+		given(accountRepository.findById(sender.getId())).willReturn(Optional.of(sender));
+
+		given(accountRepository.findById(2l)).willReturn(Optional.empty());
+		
+		assertThrows(AccountNotFoundException.class, () -> accountService.changeAmount(1l, 2l, new BigDecimal(250)));
+
+		verify(accountRepository, never()).changeAmount(anyLong(), any());
+		
 	}
 }
